@@ -25,10 +25,7 @@ def playstream():
 	for i in streams:
 		if i['title'] == streamtitle:
 			streamid = i['id']
-	#streamurl = f'{URL}play?stream={selection.get()}'
 	streamurl = f'{URL}play?stream={streamid}'
-
-	print(f'Play {streamurl}')
 	r=requests.get(streamurl)
 	r.raise_for_status()
 

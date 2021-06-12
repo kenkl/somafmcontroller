@@ -10,18 +10,25 @@ SIZE=14
 W="W"
 E="E"
 streamslist = []
+streams = []
 
 def getstreams():
-	global streamslist
+	global streamslist, streams
 	resp = requests.get(f'{URL}streamlist')
 	resp.raise_for_status()
 	streams = json.loads(resp.text)
-	for key in streams:
-		streamslist.append(key)
+	for i in streams:
+		streamslist.append(i['title'])
 
 def playstream():
-	streamurl = f'{URL}play?stream={selection.get()}'
-	#print(f'Play {streamurl}')
+	streamtitle = selection.get()
+	for i in streams:
+		if i['title'] == streamtitle:
+			streamid = i['id']
+	#streamurl = f'{URL}play?stream={selection.get()}'
+	streamurl = f'{URL}play?stream={streamid}'
+
+	print(f'Play {streamurl}')
 	r=requests.get(streamurl)
 	r.raise_for_status()
 

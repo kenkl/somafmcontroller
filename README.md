@@ -8,3 +8,4 @@ This project is a simple TKinter application used to select/play a stream on the
 
 ![alt text](https://i.imgur.com/nmfmB41.png "somafmcontroller ui")
 
+2021-06-12: I've updated [somafmplayer](https://github.com/kenkl/somafmplayer) to pull the full streams list from SomaFM, changing the semantics of selecting/starting a stream. That necessitated changes to this controller to call the right way to the player.
